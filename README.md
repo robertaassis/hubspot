@@ -34,8 +34,8 @@ Deve-se ter também:
 
 3. Substituição de varíaveis  
    No arquivo src/main/resources/application.properties, substitua os seguintes valores pelas suas credenciais do HubSpot (disponível na página de configurações do aplicativo):  
-   spring.security.oauth2.client.registration.hubspot.client-id=_SEU_CLIENT_ID  
-   spring.security.oauth2.client.registration.hubspot.client-secret=_SEU_CLIENT_SECRET
+   spring.security.oauth2.client.registration.hubspot.client-id=SEU_CLIENT_ID  
+   spring.security.oauth2.client.registration.hubspot.client-secret=SEU_CLIENT_SECRET
 
 4. Construa a imagem e suba o contêiner  
    i. Na raiz do repositório, execute o comando a seguir para construir a imagem e subir o contêiner: **docker-compose up --build**  
