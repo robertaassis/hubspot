@@ -19,7 +19,7 @@
         <appender-ref ref="console"/>
     </root>
 
-    <logger name="br.com.hubspot.service" level="INFO">
+    <logger name="br.com.meetime.hubspot.service" level="INFO">
         <appender-ref ref="console"/>
         <appender-ref ref="file"/>
     </logger>
