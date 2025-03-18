@@ -22,18 +22,23 @@ public class SimpleBearerTokenFilter extends OncePerRequestFilter {
 
         String token = extraiToken(request);
 
-        if (token != null) {
+        // Se o token não for enviado, retorna 403 Forbidden
+        if (token == null) {
+            response.setStatus(HttpStatus.FORBIDDEN.value());
+            response.getWriter().write("Acesso negado: token não fornecido no header Authorization.");
+            response.getWriter().flush();
+            return;
+        }
 
-            try{
-                SimpleBearerTokenAuthentication authentication = new SimpleBearerTokenAuthentication(token);
-                authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            } catch(HttpClientErrorException.Unauthorized ex) {
-                response.setStatus(HttpStatus.UNAUTHORIZED.value());
-                response.getWriter().write(ex.getMessage());
-                response.getWriter().flush();
-                return;
-            }
+        try {
+            SimpleBearerTokenAuthentication authentication = new SimpleBearerTokenAuthentication(token);
+            authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+        } catch (HttpClientErrorException.Unauthorized ex) { // Se o token for inválido, retorna 401 Unauthorized
+            response.setStatus(HttpStatus.UNAUTHORIZED.value());
+            response.getWriter().write("Token inválido.");
+            response.getWriter().flush();
+            return;
         }
 
         filterChain.doFilter(request, response);
