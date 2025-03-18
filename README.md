@@ -5,6 +5,8 @@
 * Maven para build e gerenciamento de dependências
 * Ngrok para expor a aplicação à internet
 * Docker para criação de contêineres
+* Jakarta Servlet para manipulação de respostas HTTP
+* SLF4J para logging
 
 ### Pré-requisitos
 Antes de começar, certifique-se de ter os seguintes requisitos instalados e que todos estejam configurados no PATH nas variáveis do sistema:
