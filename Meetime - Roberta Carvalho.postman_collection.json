@@ -1,0 +1,70 @@
+{
+  "info": {
+    "_postman_id": "4cd6d265-8357-4b82-986f-482b95997af2",
+    "name": "Meetime - Roberta Carvalho",
+    "description": "Boa tarde!\n\nDisponibilizo dois endpoints principais:\n\n🔹 **GET** - `http://localhost:8080/auth/url-autorizacao`  \nGera e retorna a URL de autorização para iniciar o fluxo OAuth com o HubSpot.\n\nAo realizar o request nessa api, aparecerá a tela do Hubspot para ser realizado o consentimento do aplicativo.\n\n🔹 **POST** - `http://localhost:8080/contacts`  \nCria um contato no CRM por meio da API.\n\nO body deve ser alterado passando as informações de email, firstname, lastname e phone, a fim de realizar a criação do contato.  \n\n⚠️ **Importante:** Para criar um contato, primeiro obtenha o token de acesso acessando o endpoint `/auth/url-autorizacao` (token será escrito na tela) e inclua-o no authorization header (Bearer token).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "15980534",
+    "_collection_link": "https://www.postman.com/robertaassis/workspace/meetime-roberta-carvalho/collection/15980534-4cd6d265-8357-4b82-986f-482b95997af2?action=share&source=collection_link&creator=15980534"
+  },
+  "item": [
+    {
+      "name": "Url de autorização",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/auth/url-autorizacao",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "auth",
+            "url-autorizacao"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Criar contato",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"\",\r\n    \"firstname\": \"\",\r\n    \"lastname\": \"\",\r\n    \"phone\": \"\"\r\n }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/contacts",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "contacts"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
